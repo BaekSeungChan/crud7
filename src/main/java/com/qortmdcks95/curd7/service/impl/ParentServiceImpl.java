@@ -53,4 +53,15 @@ public class ParentServiceImpl implements ParentService {
         parentRepository.delete(parent);
     }
 
+    @Override
+    public ParentDto updateParent(ParentDto parentDto, long id){
+        Parent parent = parentRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+
+        parent.setName(parentDto.getName());
+        parent.setAge(parentDto.getAge());
+
+        Parent updateParent = parentRepository.save(parent);
+
+        return modelMapper.map(updateParent, ParentDto.class);
+    }
 }
