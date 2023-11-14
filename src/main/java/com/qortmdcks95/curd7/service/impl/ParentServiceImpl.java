@@ -9,6 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ParentServiceImpl implements ParentService {
     private final ParentRepository parentRepository;
@@ -27,6 +30,13 @@ public class ParentServiceImpl implements ParentService {
         Parent saveParent = parentRepository.save(parent);
 
         return modelMapper.map(saveParent, ParentDto.class);
+    }
+
+    @Override
+    public List<ParentDto> getAllParent(){
+        List<Parent> parents = parentRepository.findAll();
+
+        return parents.stream().map((parent) -> modelMapper.map(parent, ParentDto.class)).collect(Collectors.toList());
     }
 
 }
