@@ -13,4 +13,6 @@ public class ParentDto {
     private String name;
 
     private Integer age = 10;
+
+    private Long childId;
 }
