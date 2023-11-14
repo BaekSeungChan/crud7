@@ -35,4 +35,9 @@ public class ParentController {
         return ResponseEntity.ok(parentService.getParentById(id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteParentById(@PathVariable(name = "id") long id){
+        return ResponseEntity.ok("deleted post");
+    }
+
 }

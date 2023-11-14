@@ -47,4 +47,10 @@ public class ParentServiceImpl implements ParentService {
         return modelMapper.map(parent, ParentDto.class);
     }
 
+    @Override
+    public void deleteParentById(long id){
+        Parent parent = parentRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+        parentRepository.delete(parent);
+    }
+
 }
