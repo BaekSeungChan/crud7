@@ -39,4 +39,12 @@ public class ParentServiceImpl implements ParentService {
         return parents.stream().map((parent) -> modelMapper.map(parent, ParentDto.class)).collect(Collectors.toList());
     }
 
+
+    @Override
+    public ParentDto getParentById(long id){
+        Parent parent = parentRepository.findById(id).orElseThrow(() -> new RuntimeException("No id"));
+
+        return modelMapper.map(parent, ParentDto.class);
+    }
+
 }

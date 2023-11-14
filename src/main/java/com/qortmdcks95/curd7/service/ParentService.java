@@ -9,4 +9,6 @@ public interface ParentService {
     ParentDto createParent(ParentDto parentDto);
 
     List<ParentDto> getAllParent();
+
+    ParentDto getParentById(long id);
 }

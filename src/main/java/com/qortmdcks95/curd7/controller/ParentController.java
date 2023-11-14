@@ -30,4 +30,9 @@ public class ParentController {
         return ResponseEntity.ok(parentService.getAllParent());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ParentDto> getParentById(@PathVariable(name = "id") long id){
+        return ResponseEntity.ok(parentService.getParentById(id));
+    }
+
 }
