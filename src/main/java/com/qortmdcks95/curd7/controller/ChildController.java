@@ -3,6 +3,7 @@ package com.qortmdcks95.curd7.controller;
 import com.qortmdcks95.curd7.entity.Child;
 import com.qortmdcks95.curd7.payload.ChildDto;
 import com.qortmdcks95.curd7.service.ChildService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/child")
+@Tag(name = "Child api's")
 public class ChildController {
     private ChildService childService;
 

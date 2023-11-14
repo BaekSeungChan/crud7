@@ -3,6 +3,8 @@ package com.qortmdcks95.curd7.controller;
 import com.qortmdcks95.curd7.payload.ParentDto;
 import com.qortmdcks95.curd7.repository.ParentRepository;
 import com.qortmdcks95.curd7.service.ParentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/parent")
+@Tag(name = "Parent API's")
 public class ParentController {
     private final ParentService parentService;
 
@@ -21,6 +24,10 @@ public class ParentController {
     }
 
     @PostMapping
+    @Operation(
+            summary = "Create parent",
+            description = "Create Child API"
+    )
     public ResponseEntity<ParentDto> createParent(@Valid @RequestBody ParentDto parentDto){
         return new ResponseEntity<>(parentService.createParent(parentDto), HttpStatus.OK);
     }
