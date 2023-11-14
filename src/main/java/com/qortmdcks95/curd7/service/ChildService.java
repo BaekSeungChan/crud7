@@ -11,4 +11,8 @@ public interface ChildService {
     List<ChildDto> getAllChild();
 
     ChildDto getChildById(long id);
+
+    void deleteChildById(long id);
+
+    ChildDto updateChild(ChildDto childDto, long id);
 }

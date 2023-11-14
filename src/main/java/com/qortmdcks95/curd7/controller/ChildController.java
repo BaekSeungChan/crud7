@@ -1,5 +1,6 @@
 package com.qortmdcks95.curd7.controller;
 
+import com.qortmdcks95.curd7.entity.Child;
 import com.qortmdcks95.curd7.payload.ChildDto;
 import com.qortmdcks95.curd7.service.ChildService;
 import jakarta.validation.Valid;
@@ -34,5 +35,16 @@ public class ChildController {
         return ResponseEntity.ok(childService.getChildById(id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteChildById(@PathVariable(name = "id") long id){
+        childService.deleteChildById(id);
+        return ResponseEntity.ok("delete child");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ChildDto> updateChild(@PathVariable(name = "id") long id, @Valid @RequestBody ChildDto childDto){
+        ChildDto childReponse = childService.updateChild(childDto, id);
+        return new ResponseEntity<>(childReponse, HttpStatus.OK);
+    }
 
 }
